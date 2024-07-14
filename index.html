@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="description"
+        content="">
+  <meta name="keywords" content="3D facial animation, Text-driven, Text-to-Speech">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Avatron</title>
+
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+  <!-- <script async src="https://www.googletagmanager.com/gtag/js?id=G-PYVRSFMDRL"></script> -->
+  <script>
+    window.dataLayer = window.dataLayer || [];
+
+    function gtag() {
+      dataLayer.push(arguments);
+    }
+
+    gtag('js', new Date());
+
+    gtag('config', 'G-PYVRSFMDRL');
+  </script>
+
+  <link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro"
+        rel="stylesheet">
+
+  <link rel="stylesheet" href="./static/css/bulma.min.css">
+  <link rel="stylesheet" href="./static/css/bulma-carousel.min.css">
+  <link rel="stylesheet" href="./static/css/bulma-slider.min.css">
+  <link rel="stylesheet" href="./static/css/fontawesome.all.min.css">
+  <link rel="stylesheet"
+        href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
+  <link rel="stylesheet" href="./static/css/index.css">
+  <link rel="icon" href="./static/images/favicon.svg">
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script defer src="./static/js/fontawesome.all.min.js"></script>
+  <script src="./static/js/bulma-carousel.min.js"></script>
+  <script src="./static/js/bulma-slider.min.js"></script>
+  <script src="./static/js/index.js"></script>
+</head>
+<body>
+
+
+<section class="hero">
+  <div class="hero-body">
+    <div class="container is-max-desktop">
+      <div class="columns is-centered">
+        <div class="column has-text-centered">
+          <h1 class="title is-1 publication-title"> <strong>Avatron: 3D Face Avatar and Voice Generation from Text</strong> </h1>
+          <div class="is-size-5 publication-authors">
+            <span class="author-block">
+              <a> </a></span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="hero teaser">
+  <div class="container is-max-desktop">
+    <div class="hero-body">
+      <div class ="div_video">
+        <iframe width="840" height="470" src="https://www.youtube.com/embed/ZKT9XjVdJDo?si=UtlVqYP3u8NNHufB" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+      </div>
+        <h2 class="subtitle has-text-centered">
+        <strong>Avatron</strong> can efficiently generate expressive 3D facial animation from text. 
+      </h2>
+    </div>
+  </div>
+</section>
+
+<section class="hero teaser">
+  <div class="container is-max-desktop">
+    <div class="hero-body">
+      <div class ="div_video">
+        <iframe width="400" height="225" src="https://www.youtube.com/embed/lFCT0AQ5utE?si=zcdV6kNOtUpMdmEp" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+      </div>
+        <h2 class="subtitle has-text-centered">
+        Additional comprision. The quality of generated avatars varies depending on the type of data.
+      </h2>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container is-max-desktop">
+    <!-- Abstract. -->
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-four-fifths">
+        <h2 class="title is-3">Abstract</h2>
+        <div class="content has-text-justified">
+          <p>
+Speech-driven 3D facial animation models are pivotal components in a variety of human interaction systems. 
+However, speech-driven methods are strongly dependent on the quality of input speech, and there are no ways of flexibly changing the content of the speech without re-recording, which can be costly and time-consuming.
+Using text-to-speech (TTS) as an intermediate step offers an avenue to generate 3D avatars for any content, but involves an inefficient pipeline: converting text to speech and subsequently generating a 3D avatar from the synthesized speech.
+In order to overcome this constraint, we propose a novel approach for 3D facial animation that effectively merges these two domains. 
+Our model takes advantage of intermediate features derived from the alignment of text and speech, which are then utilized as input for an avatar decoder to transform them into the vertices of a 3D facial animation.
+By jointly modeling lip movements, text, and speech characteristics, we are able to achieve exceptional performance while substantially reducing the number of model parameters and computational complexity. 
+We demonstrate the efficacy of our model by assessing it in terms of the mean square error of 3D mesh vertices and through a user study that includes ABX test comparisons.
+          </p>
+        </div>
+      </div>
+    </div>
+    <br>
+    <br>
+    
+    <!-- Proposed Method. -->
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-four-fifths">
+        <h2 class="title is-3">Proposed Method</h2>
+        <div class="content has-text-justified">
+          <img src="./static/images/architecture .png" alt="">
+          <p>
+            <br>
+            Architecture of Avatron. The TTS model in the left blue box generates a mel-spectrogram from phoneme sequences, and the reference mel-spectrogram is used to train the internal aligner and speaker encoder. During inference, in the right blue box, the duration predictor is utilized in place of the internal aligner. The speech-to-animation model in the green box predicts the vertices of a 3D face mesh by leveraging upsampled phonemes and their corresponding label embeddings. To simplify the diagram, the duration predictor in training phase and the pitch and energy encoders are omitted.
+
+          </p>
+          <!-- <p>
+            
+          </p>
+          <p>
+            
+          </p> -->
+        </div>
+      </div>
+    </div>
+    <!--/ Proposed Method. -->  
+</section>
+ 
+
+
+
+
+</body>
+</html>
