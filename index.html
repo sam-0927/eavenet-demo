@@ -66,20 +66,7 @@
         <iframe width="840" height="470" src="https://www.youtube.com/embed/ZKT9XjVdJDo?si=UtlVqYP3u8NNHufB" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
       </div>
         <h2 class="subtitle has-text-centered">
-        <strong>Avatron</strong> can efficiently generate expressive 3D facial animation from text. 
-      </h2>
-    </div>
-  </div>
-</section>
-
-<section class="hero teaser">
-  <div class="container is-max-desktop">
-    <div class="hero-body">
-      <div class ="div_video">
-        <iframe width="400" height="225" src="https://www.youtube.com/embed/lFCT0AQ5utE?si=zcdV6kNOtUpMdmEp" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-      </div>
-        <h2 class="subtitle has-text-centered">
-        Additional comprision. The quality of generated avatars varies depending on the type of data.
+        <strong>EavaNet</strong> can create expressive emotional 3D facial animation using style embedding and control the intensity of emotions.
       </h2>
     </div>
   </div>
@@ -93,13 +80,12 @@
         <h2 class="title is-3">Abstract</h2>
         <div class="content has-text-justified">
           <p>
-Speech-driven 3D facial animation models are pivotal components in a variety of human interaction systems. 
-However, speech-driven methods are strongly dependent on the quality of input speech, and there are no ways of flexibly changing the content of the speech without re-recording, which can be costly and time-consuming.
-Using text-to-speech (TTS) as an intermediate step offers an avenue to generate 3D avatars for any content, but involves an inefficient pipeline: converting text to speech and subsequently generating a 3D avatar from the synthesized speech.
-In order to overcome this constraint, we propose a novel approach for 3D facial animation that effectively merges these two domains. 
-Our model takes advantage of intermediate features derived from the alignment of text and speech, which are then utilized as input for an avatar decoder to transform them into the vertices of a 3D facial animation.
-By jointly modeling lip movements, text, and speech characteristics, we are able to achieve exceptional performance while substantially reducing the number of model parameters and computational complexity. 
-We demonstrate the efficacy of our model by assessing it in terms of the mean square error of 3D mesh vertices and through a user study that includes ABX test comparisons.
+Speech-driven 3D facial animation models are essential for creating human-like avatars that synchronize lip movements realistically with speech. 
+Despite these advancements, it is still difficult to effectively convey a wide range of emotional facial expressions that align with the voice.
+This issue arises due to the lack of clearly labeled datasets for individual emotions as well as insufficient inputs to adequately describe these emotions.
+To overcome this challenge, we propose a re-categorization process that reduces the data into four emotional groups: angry, sadness, happy, and neutral. We use the re-categorized datasets to estimate style embeddings, which serve to distinctly express emotions and control their intensity. 
+Additionally, we tackle the challenge of slow inference speed in autoregressive models by introducing EavaNet, a non-autoregressive model utilizing gated activation units (GAUs) and bidirectional long short-term memory (BLSTM) modules for efficient prediction of 3D face mesh vertices.
+Our proposed model outperforms previous state-of-the-art models in terms of emotional expressiveness and lip synchronization accuracy in both subjective and objective evaluations.
           </p>
         </div>
       </div>
@@ -112,10 +98,10 @@ We demonstrate the efficacy of our model by assessing it in terms of the mean sq
       <div class="column is-four-fifths">
         <h2 class="title is-3">Proposed Method</h2>
         <div class="content has-text-justified">
-          <img src="./static/images/architecture .png" alt="">
+          <img src="./architecture_yj.png" alt="">
           <p>
             <br>
-            Architecture of Avatron. The TTS model in the left blue box generates a mel-spectrogram from phoneme sequences, and the reference mel-spectrogram is used to train the internal aligner and speaker encoder. During inference, in the right blue box, the duration predictor is utilized in place of the internal aligner. The speech-to-animation model in the green box predicts the vertices of a 3D face mesh by leveraging upsampled phonemes and their corresponding label embeddings. To simplify the diagram, the duration predictor in training phase and the pitch and energy encoders are omitted.
+            Architecture of EaveNet. The emotional speech inputs to the audio encoder to model contextual information, then they are downsampled by convolution layers and fed into the GAU by adding style embedding and speaker embedding. The output of GAU is converted to the vertices of 3D face mesh after passing through BLSTM and projection layers. During training, the style embeddings are estimated from the style vertices of the target emotion but not from the target vertices. In the inference process the center of each emotion cluster is used instead.
 
           </p>
           <!-- <p>
